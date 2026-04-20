@@ -86,3 +86,9 @@ app.post('/music', async (req, res) => {
 app.listen(5000, () => {
     console.log("🚀 Server is live on port 5000");
 });
+app.delete('/projects/all/clear', async (req, res) => {
+    try {
+        await pool.query("DELETE FROM projects");
+        res.json("All projects cleared!");
+    } catch (err) { console.error(err.message); }
+});
